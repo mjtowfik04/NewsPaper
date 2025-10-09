@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from News.models import Category, News, ImageModel
-
+from News.models import Category, News, ImageModel,Comment,Advertisement
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
@@ -23,3 +22,21 @@ class NewsSerializer(serializers.ModelSerializer):
     def get_url(self, obj):
         request = self.context.get("request")
         return request.build_absolute_uri(f"/api/news/{obj.pk}/")
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Comment
+        fields=['id','content',]
+        read_only_fields = ['user','is_approved']
+
+        
+class AdvertisementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Advertisement
+        fields=['id','content','image']
+    # content = models.TextField()
+    # image = models.ImageField(upload_to="ads_images/", blank=True, null=True)
+    # is_active = models.BooleanField(default=True)   
+    # created_at = models.DateTimeField(auto_now_add=True)
+    # updated_at = models.DateTimeField(auto_now=True)
