@@ -1,11 +1,16 @@
+
 {
+  "version": 2,
   "builds": [
     {
-      "src": "manage.py",
+      "src": "bangl_press/wsgi.py",
       "use": "@vercel/python"
     }
   ],
-  "env": {
-    "PYTHON_VERSION": "3.11"
-  }
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "bangl_press/wsgi.py"
+    }
+  ]
 }

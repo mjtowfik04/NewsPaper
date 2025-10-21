@@ -20,7 +20,7 @@ SECRET_KEY = 'django-insecure-1z7$%c7o^-w$k_^c!@i%68uj43y_at7jy)liteh*wac+c^qi80
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".vercel.app",'127.0.0.1']
 AUTH_USER_MODEL = 'users.User'
 
 
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bangl_press.wsgi.application'
+WSGI_APPLICATION = 'bangl_press.wsgi.app'
 
 
 # Database
