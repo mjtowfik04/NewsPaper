@@ -20,10 +20,19 @@ class CategoryViewSet(ModelViewSet):
     serializer_class = CategorySerializer
     permission_classes = [IsStaffOrReadOnly]
 
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
+from .models import ImageModel
+from .serializers import ImageSerializer
+from api.permissons import IsStaffOrReadOnly
+
+@method_decorator(csrf_exempt, name='dispatch')  # CSRF disabled for this ViewSet
 class ImageViewSet(ModelViewSet):
     serializer_class = ImageSerializer
-    permission_classes = [IsStaffOrReadOnly]
+    permission_classes = [IsStaffOrReadOnly, IsAuthenticated]  # JWT required
 
     def get_queryset(self):
         # Swagger schema generate করার সময় error এড়ানোর জন্য check
