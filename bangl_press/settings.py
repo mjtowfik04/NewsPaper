@@ -1,5 +1,7 @@
 
 import os
+import cloudinary
+from decouple import config
 
 from pathlib import Path
 from dotenv import load_dotenv
@@ -163,3 +165,25 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
+
+
+
+cloudinary.config( 
+    cloud_name = config('cloud_name'), 
+    api_key = config('cloudinary_api_key'), 
+    api_secret = config('api_secret'), 
+    secure=True
+)
+
+DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+}
+
