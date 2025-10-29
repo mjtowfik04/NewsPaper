@@ -12,7 +12,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY= 'django-insecure-1z7$%c7o^-w$k_^c!@i%68uj43y_at7jy)liteh*wac+c^qi80'
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [".vercel.app", "127.0.0.1",]
 
@@ -107,15 +107,6 @@ cloudinary.config(
     secure=True
 )
 
-# FIX: Development এ local storage ব্যবহার করুন, Production এ Cloudinary
-if DEBUG:
-    # Development - Local Storage
-    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-else:
-    # Production - Cloudinary Storage
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -148,3 +139,5 @@ SWAGGER_SETTINGS = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
