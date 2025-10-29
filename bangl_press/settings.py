@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bangl_press.wsgi.application'
+WSGI_APPLICATION = 'bangl_press.wsgi.app'
 
 DATABASES = {
     'default': {
