@@ -11,10 +11,10 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-default-key')
-DEBUG = config('DEBUG', default=True, cast=bool)
+SECRET_KEY= 'django-insecure-1z7$%c7o^-w$k_^c!@i%68uj43y_at7jy)liteh*wac+c^qi80'
+DEBUG = False
 
-ALLOWED_HOSTS = ["*", ".vercel.app", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = [".vercel.app", "127.0.0.1",]
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -59,6 +59,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -95,8 +96,8 @@ USE_TZ = True
 # Static and Media Files Configuration
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Cloudinary Configuration
 cloudinary.config(
