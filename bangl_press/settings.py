@@ -12,7 +12,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY= 'django-insecure-1z7$%c7o^-w$k_^c!@i%68uj43y_at7jy)liteh*wac+c^qi80'
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [".vercel.app", "127.0.0.1",]
 
